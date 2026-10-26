@@ -1,0 +1,5 @@
+{
+	"title": "Bei Bedarf geladen",
+	"intro": "Dieser Namespace ist nicht im Bundle der Seite enthalten. Er kommt über den Loader, den du konfigurierst — hier ein dynamischer Import, in deiner App genauso gut ein fetch an eine API.",
+	"stats": ".input {$count :number}\n.match $count\none {{In {$count} Sprache verfügbar}}\n* {{In {$count} Sprachen verfügbar}}"
+}

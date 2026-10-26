@@ -1,0 +1,17 @@
+{
+	"title": "Rich Text",
+	"lead": "Ein Link mitten in einem übersetzten Satz ist das klassische i18n-Problem: Teilst du den String auf drei Schlüssel auf, verliert die Übersetzerin die Wortstellung. MF2 hat dafür Markup, und die Rich-Komponente rendert es über Snippets — der Markup-Name in der Nachricht entscheidet, welches Snippet den Text umschließt.",
+	"demo_title": "Probier es aus",
+	"demo_text": "Der Link und sein Ziel stehen in der Übersetzung, nicht in der Komponente:",
+	"cta": "Lies {#link to=|/setup|}die Doku{/link}, bevor du live gehst",
+	"options_title": "Optionen und Verschachtelung",
+	"options_text": "Ein Snippet erhält ein Snippet für den Inhalt des Markups sowie dessen MF2-Optionen — aus \\{#link to=|/x|\\} wird \\{ to: '/x' \\} —, sodass eine Übersetzung Attribute pro Locale mitbringen kann. Das sind Eingaben wie alle anderen, also prüfe sie, bevor sie in einem Attribut landen: Die Snippets auf dieser Seite lassen nur einen Pfad auf dieser Website durch. Verschachtelung funktioniert beliebig tief; jede Ebene läuft durch ihr eigenes Snippet:",
+	"nested": "{#b}fett, mit einem {#link to=|/setup|}Link{/link} darin{/b}",
+	"fallback_title": "Fehlende Snippets lassen die Seite nicht abstürzen",
+	"fallback_text": "Markup ohne passendes Snippet rendert trotzdem seinen Inhalt — eine veraltete Übersetzung oder eine, die vor dem Snippet entstanden ist, degradiert also sanft, statt zu verschwinden:",
+	"unwired": "Dieser Satz enthält mittendrin {#glow}nicht angebundenes Markup{/glow}",
+	"parts_title": "Unterhalb von Rich",
+	"parts_text": "formatParts(key, params) ist der Baustein darunter — er liefert text-, open-, close- und standalone-Teile. Greif direkt darauf zurück, wenn du Markup lieber mit eigener Technik rendern möchtest.",
+	"names_title": "Markup benennen",
+	"names_text": "Markup-Namen werden zu Snippet-Namen, also halte sie als gültige Bezeichner — für \\{#my-link\\} lässt sich kein Snippet schreiben."
+}

@@ -1,0 +1,22 @@
+{
+	"$schema": "https://context7.com/schema/context7.json",
+	"projectTitle": "svelte-dialect",
+	"description": "i18n for Svelte 5 and SvelteKit 3 on MessageFormat 2 (MF2). The locale is a rune; on the server it is negotiated per request, from the URL prefix, a cookie or Accept-Language, and it can live in the URL without a [locale] route folder. Includes typed message keys from a CLI, lazy-loaded namespaces, markup in messages rendered through snippets, and migration from i18next and ICU.",
+	"folders": ["docs"],
+	"excludeFiles": [
+		"CHANGELOG.md",
+		"LICENSE",
+		"CODE_OF_CONDUCT.md",
+		"CONTRIBUTING.md",
+		"SECURITY.md",
+		"CLAUDE.md"
+	],
+	"rules": [
+		"In SvelteKit apps import createDialect from 'svelte-dialect/kit'; the root 'svelte-dialect' entry is for Svelte without SvelteKit.",
+		"Export reroute from the universal src/hooks.ts and handle from src/hooks.server.ts; reroute does not work in hooks.server.ts.",
+		"Build internal links with localizeHref('/path') so they keep the locale prefix.",
+		"Messages are MessageFormat 2: variables are {$name}, plurals use .input/.match, markup is {#tag}…{/tag}. ICU or i18next syntax does not work; convert it with `svelte-dialect migrate`.",
+		"event.url and page.url keep the locale prefix (/de/admin); match routes and write access checks against route.id, which never has it.",
+		"Setup in an existing SvelteKit 3 project: npx sv add svelte-dialect."
+	]
+}

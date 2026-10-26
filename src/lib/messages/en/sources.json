@@ -1,0 +1,21 @@
+{
+	"title": "Loading messages",
+	"lead": "Three ways to get messages in, and two patterns for asking a page to wait for them. They compose: bundle what every page needs, fetch the rest.",
+	"build_title": "1. At build time",
+	"build_eager_text": "The default. import.meta.glob reads the files during compilation and inlines them — no request at runtime, nothing to configure.",
+	"build_lazy_text": "Drop eager: true from the same glob and each namespace becomes its own chunk, fetched the first time a page asks for it. Both forms can sit in the same messages object.",
+	"demand_title": "2. On demand",
+	"demand_lead": "Two patterns for waiting on a namespace before rendering. Below, one page uses each — reload to see both run.",
+	"load_title": "In a load function",
+	"load_text": "A universal load may return anything, including the t function itself. Works on stable SvelteKit, no compiler flags.",
+	"component_title": "In the component",
+	"component_text": "Awaited straight in <script>.",
+	"component_note": "This needs Svelte 5.36+ with compilerOptions.experimental.async.",
+	"api_title": "3. From your own API",
+	"remote_title": "SvelteKit remote functions",
+	"remote_text": "A query() called like a local function, run inside your loader — no endpoint to write, no fetch to get wrong. Needs kit.experimental.remoteFunctions and compilerOptions.experimental.async.",
+	"fetch_title": "Plain fetch",
+	"fetch_text": "The portable option: no experimental flags, works during SSR provided the URL is absolute — there is no page to be relative to on the server.",
+	"dedupe_title": "One call, however many requests",
+	"dedupe_text": "Concurrent callers for the same locale and namespace share one in-flight loader call, so a hundred simultaneous SSR requests trigger one fetch, not a hundred."
+}

@@ -1,0 +1,17 @@
+{
+	"title": "Typisierte Schlüssel & CLI",
+	"lead": "t('home:titel') kompiliert und rendert den Schlüssel selbst, weil TypeScript deinen Katalog nicht von allein kennen kann. Erzeuge eine Union aus denselben Dateien, die auch die Laufzeit liest, und es kennt ihn.",
+	"generate_title": "Die Typen generieren",
+	"generate_text": "Lass die CLI über deine Message-Dateien laufen und übergib das Ergebnis an createDialect. Bekannte Schlüssel werden nun vervollständigt, während jeder gewöhnliche String weiterhin kompiliert. Schlüssel, die erst zur Laufzeit existieren, etwa aus einer Datenbank, funktionieren also weiter. Die Kehrseite: Auch ein falsch geschriebener Schlüssel kompiliert, ihn findet svelte-dialect check (siehe unten).",
+	"params_title": "Strikte Parameter",
+	"params_text": "Die generierte Datei exportiert außerdem MessageParams. Übergib es als zweites Generic, und die Parameter, die eine Nachricht nennt, werden Teil der Signatur von t — ein Aufruf, dem einer fehlt oder bei dem einer falsch geschrieben ist, ist nun ein Typfehler statt eines stillen Fallback-Texts zur Laufzeit.",
+	"params_note": "Beide Generics sind additiv: Lässt du eines weg, bleibt jeder Aufruf so permissiv wie zuvor.",
+	"snapshot_title": "Schlüssel aus einer Datenbank",
+	"snapshot_text": "Typen sind eine Momentaufnahme dessen, was die Generierung gesehen hat. Für einen Katalog, der woanders liegt, exportierst du einen \\{locale: \\{namespace: \\{…\\}\\}\\}-Dump, richtest typegen --from-json darauf und generierst neu, sobald sich der Dump ändert.",
+	"cli_title": "Die CLI",
+	"cli_lead": "Drei Befehle, ausschließlich über Flags statt über eine Konfigurationsdatei gesteuert. --messages darf bei allen dreien mehrfach angegeben werden, falls gebündelte und lazy Bäume getrennt liegen. Alle Flags und Exit-Codes stehen in der {#cli}CLI-Referenz{/cli}.",
+	"check_title": "check",
+	"check_text": "Durchsucht deinen Quellcode nach t('ns:key')-Literalen und meldet Schlüssel, die in einer Locale fehlen (Exit-Code 1, gehört also in die CI), sowie mit --unused Katalogschlüssel, auf die nichts verweist. Aus Variablen zusammengesetzte Schlüssel sind für einen statischen Scan unsichtbar, er berichtet also ehrlich über das, was er sehen kann.",
+	"migrate_title": "migrate",
+	"migrate_text": "Schreibt i18next-Interpolationen im \\{\\{name\\}\\}-Stil um, fasst die Plural-Suffixe key_one/key_other zu einem MF2-.match zusammen und versteht die gängigen ICU-MessageFormat-Konstrukte. Jeder erzeugte String wird vor dem Schreiben mit dem echten MF2-Parser validiert; was sich nicht umwandeln lässt, bleibt unangetastet und wird gemeldet. Starte zuerst mit --dry-run, um die Vorher-Nachher-Paare zu sehen."
+}

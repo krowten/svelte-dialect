@@ -1,0 +1,14 @@
+{
+	"$schema": "https://json.schemastore.org/claude-code-settings.json",
+	"extraKnownMarketplaces": {
+		"svelte": {
+			"source": {
+				"source": "github",
+				"repo": "sveltejs/ai-tools"
+			}
+		}
+	},
+	"enabledPlugins": {
+		"svelte@svelte": true
+	}
+}

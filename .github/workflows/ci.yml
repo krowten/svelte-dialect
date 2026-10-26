@@ -1,0 +1,64 @@
+# Tests only. Releases are staged by release.yml on a version tag.
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+permissions:
+  contents: read
+
+# a newer push to the same branch or PR makes the running checks moot
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    # Every push runs CI, so a pull request from a branch of this repository would test the same
+    # commit twice; its pull_request run only goes ahead for forks.
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: ubuntu-latest
+    # a hung step would otherwise hold the runner for 6 hours
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      # the lowest Node `engines` allows; the browser job runs the image's Node 24
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22.17
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - run: bun run lint
+      # the generated key types must match the messages they were generated from
+      - run: bun run typegen && git diff --exit-code src/lib/i18n-keys.d.ts
+      - run: bun run check:i18n
+      - run: bun run check
+
+  # The Playwright image ships the browsers with their system libraries, which
+  # `playwright install --with-deps` would otherwise pull through apt on every run: half a minute on
+  # a good day, a stalled mirror on a bad one.
+  # shortcut: the image tag is bumped by hand along with playwright; a mismatch only costs the
+  # `playwright install` in test:e2e a browser download
+  browser:
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    container:
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
+      options: --ipc=host
+    steps:
+      - uses: actions/checkout@v7
+      # setup-bun needs unzip, which the image lacks; npm brings the same binary
+      - run: npm install --global bun
+      - run: bun install --frozen-lockfile
+      # node and browser projects; the client one runs in Chromium
+      - run: bun run test:unit -- --run
+      - run: bun run test:e2e
+      # test:e2e builds the site, which regenerates docs/ (scripts/markdown.ts); committed copies must match
+      - name: docs/ is up to date
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git add -N docs
+          git diff --exit-code docs || { echo 'docs/ is stale: run bun run build:docs and commit it' >&2; exit 1; }

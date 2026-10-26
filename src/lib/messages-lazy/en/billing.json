@@ -1,0 +1,4 @@
+{
+	"title": "Loaded in a load function",
+	"intro": "This namespace was fetched in a universal load function, which returned the t function itself. No experimental compiler options involved — this is the pattern for stable SvelteKit."
+}

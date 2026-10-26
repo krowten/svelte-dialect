@@ -1,0 +1,17 @@
+{
+	"title": "Message files",
+	"lead": "One flat or nested JSON object per namespace, one file per locale. Keys are namespace:dot.path; nested objects flatten into dot paths.",
+	"layout_title": "Layout and keys",
+	"layout_text": "src/lib/messages/<locale>/<namespace>.json. \\{ \"nav\": \\{ \"home\": \"Home\" \\} \\} becomes t('common:nav.home').",
+	"params_title": "Parameters",
+	"params_text": "\\{$name\\} interpolates a value passed as the second argument to t.",
+	"plurals_title": "Plurals and selectors",
+	"plurals_text": "MF2's .match picks a branch from the value — plural categories, not just one/other, and they come from the locale's own rules, not from the library.",
+	"numbers_title": "Numbers, dates and money",
+	"numbers_text": "Formatting is Intl under an MF2 spelling: the same message renders €1,234.50 in English and 1.234,50 € in German with nothing locale-specific in your code. Available in every message: :number, :integer, :offset, :string (required), plus :currency, :date, :datetime, :time, :percent, :unit (draft).",
+	"errors_title": "When a message misbehaves",
+	"errors_text": "Nothing throws. A source that doesn't compile renders as its own key; a missing parameter leaves MF2's fallback text. A key missing from the active locale walks a chain: same-language siblings, then defaultLocale, then the key itself.",
+	"demo_items": ".input {$count :number}\n.match $count\none {{{$count} item}}\n* {{{$count} items}}",
+	"demo_price": "Total: {$amount :currency currency=EUR}",
+	"demo_due": "Due {$when :date length=long}"
+}

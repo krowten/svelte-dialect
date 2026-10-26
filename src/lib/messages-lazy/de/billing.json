@@ -1,0 +1,4 @@
+{
+	"title": "In einer Load-Funktion geladen",
+	"intro": "Dieser Namespace wurde in einer universellen Load-Funktion geholt, die die Funktion t selbst zurückgegeben hat. Es sind keine experimentellen Compiler-Optionen im Spiel — das ist das Muster für stabiles SvelteKit."
+}

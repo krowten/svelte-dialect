@@ -1,0 +1,50 @@
+{
+	"home": {
+		"title": "svelte-dialect: i18n для Svelte 5 на MessageFormat 2",
+		"description": "Небольшая i18n-библиотека для Svelte 5 и SvelteKit: руны, MessageFormat 2, типизированные ключи сообщений, локаль в URL и загрузка переводов по требованию."
+	},
+	"setup": {
+		"title": "Мультиязычность в SvelteKit и Svelte 5: установка",
+		"description": "Установите svelte-dialect, подключите handle и reroute и переведите первую страницу — в SvelteKit или в обычном приложении на Vite и Svelte."
+	},
+	"messages": {
+		"title": "Синтаксис MessageFormat 2: плюралы, числа, даты",
+		"description": "Как писать переводы на MessageFormat 2: подстановки, плюралы, селекторы, форматирование чисел, валют и дат и что происходит со сломанным сообщением."
+	},
+	"sources": {
+		"title": "Ленивая загрузка переводов в SvelteKit",
+		"description": "Переводы в бандле на этапе сборки, отдельные чанки на каждый неймспейс или загрузка из API и базы данных через remote functions."
+	},
+	"routing": {
+		"title": "Локаль в URL в SvelteKit: /ru/about через reroute",
+		"description": "Префикс локали в адресе без папки [locale]: reroute, localizeHref, базовый путь и пререндеринг каждого языка."
+	},
+	"strategy": {
+		"title": "Определение языка в SvelteKit: URL, cookie, заголовок",
+		"description": "Локаль берётся из префикса URL, cookie, Accept-Language или языка браузера в настраиваемом порядке, и у каждого запроса она своя."
+	},
+	"rich": {
+		"title": "Разметка в переводах Svelte через сниппеты",
+		"description": "Ссылки, жирный текст и компоненты внутри переведённых сообщений, отрисованные сниппетами Svelte, а не сырым HTML."
+	},
+	"typed": {
+		"title": "Типизированные ключи переводов в Svelte: typegen и check",
+		"description": "Объединение типов ключей сообщений и их параметров, проверка недостающих переводов в CI и конвертация JSON из i18next и ICU в MessageFormat 2."
+	},
+	"api": {
+		"title": "Справочник API: svelte-dialect",
+		"description": "Все экспорты svelte-dialect и svelte-dialect/kit и все опции createDialect в одной таблице."
+	},
+	"cli": {
+		"title": "Справочник CLI svelte-dialect: typegen, check, migrate",
+		"description": "Все команды, флаги и коды выхода CLI svelte-dialect: генерация типов ключей, проверка переводов в CI, перевод JSON из i18next и ICU на MessageFormat 2."
+	},
+	"migrate": {
+		"title": "Переход на MessageFormat 2 с svelte-i18n и i18next",
+		"description": "Конвертация JSON из i18next и ICU MessageFormat в MessageFormat 2 одной командой CLI и ручная доводка того, что конвертер пометил."
+	},
+	"compare": {
+		"title": "Сравнение i18n-библиотек для Svelte (2026)",
+		"description": "svelte-i18n, Sveltia I18n, sveltekit-i18n, Paraglide, typesafe-i18n, wuchale и svelte-dialect рядом: руны, типы, SSR, роутинг и формат сообщений."
+	}
+}

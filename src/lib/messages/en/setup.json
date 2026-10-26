@@ -1,0 +1,21 @@
+{
+	"title": "Setup",
+	"lead": "Every step below is required for the configuration this site runs — locale in the URL, remembered in a cookie between visits. Follow them in order and the last one puts a translated line on the page.",
+	"install_title": "Install",
+	"requires_text": "Requires Svelte 5 and, for this setup, SvelteKit 3. Without SvelteKit, import createDialect from svelte-dialect instead and skip the hooks: messages, t() and lazy namespaces work the same, while URL routing and server-side negotiation need Kit.",
+	"sv_add_text": "Or let the Svelte CLI do steps 1–5: it asks for your locales and routing, adds the package, writes src/lib/i18n.ts and a common.json per locale, and wires both hooks and app.html. An existing handle is wrapped in sequence(); files you already have are left alone. The steps below are what it writes.",
+	"messages_title": "Write a message",
+	"messages_text": "One JSON file per locale and namespace, under src/lib/messages/<locale>/<namespace>.json. The value is MessageFormat 2; add a ru/common.json with the same key for a second language.",
+	"dialect_title": "Create the dialect",
+	"dialect_text": "Once, in src/lib/i18n.ts. routing puts the locale in the URL; without it every export below still works, just against a cookie-only setup with no prefix.",
+	"handle_title": "The handle hook",
+	"handle_text": "SvelteKit calls this on every request. It negotiates the locale — the URL prefix first, then the cookie, then Accept-Language — and writes it into the response as the page streams out.",
+	"reroute_title": "The reroute hook",
+	"reroute_text": "Goes in src/hooks.ts — universal, not hooks.server.ts. Strips the prefix before SvelteKit matches routes, so /ru/about renders src/routes/about with no [locale] directory to add.",
+	"apphtml_title": "The document",
+	"apphtml_text": "handle fills these two placeholders as the page renders.",
+	"use_title": "Use it",
+	"use_text": "Import t anywhere. Start the dev server: the page reads “Hello, world!”, and /ru reads the Russian line once ru/common.json exists.",
+	"next_title": "Next",
+	"next_text": "With that in place: write more {#messages}message files{/messages}, then read how {#routing}the URL prefix and the cookie{/routing} decide which locale a visitor sees."
+}

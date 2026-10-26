@@ -1,0 +1,50 @@
+{
+	"home": {
+		"title": "svelte-dialect: Svelte 5 i18n with MessageFormat 2",
+		"description": "Small i18n library for Svelte 5 and SvelteKit with runes, MessageFormat 2, typed message keys, locale routing and translations loaded on demand."
+	},
+	"setup": {
+		"title": "Set up i18n in SvelteKit or Svelte 5",
+		"description": "Install svelte-dialect, add handle and reroute, and translate your first page, in SvelteKit or in a plain Vite + Svelte app."
+	},
+	"messages": {
+		"title": "MessageFormat 2 syntax: plurals, numbers, dates",
+		"description": "Writing translations in MessageFormat 2: placeholders, plurals, selectors, number, currency and date formatting, and what a broken message does."
+	},
+	"sources": {
+		"title": "Lazy-loading translations in SvelteKit",
+		"description": "Bundle translations at build time, split them into per-namespace chunks, or load them from an API or a database through remote functions."
+	},
+	"routing": {
+		"title": "SvelteKit locale routing: /de/about with reroute",
+		"description": "Put the locale in the URL without a [locale] folder: reroute, localizeHref, a base path, and prerendering every language."
+	},
+	"strategy": {
+		"title": "Locale detection in SvelteKit: URL, cookie, header",
+		"description": "The locale comes from the URL prefix, a cookie, Accept-Language or the browser language, in an order you can change, and each request keeps its own."
+	},
+	"rich": {
+		"title": "Rich text translations in Svelte with snippets",
+		"description": "Links, bold text and components inside translated messages, rendered through Svelte snippets instead of raw HTML."
+	},
+	"typed": {
+		"title": "Type-safe translation keys for Svelte: typegen and check",
+		"description": "Generate a union of message keys and their parameters, catch missing translations in CI, and convert i18next or ICU JSON to MessageFormat 2."
+	},
+	"api": {
+		"title": "API reference: svelte-dialect",
+		"description": "Every export of svelte-dialect and svelte-dialect/kit, and every createDialect option, in one table."
+	},
+	"cli": {
+		"title": "svelte-dialect CLI reference: typegen, check, migrate",
+		"description": "Every command, flag and exit code of the svelte-dialect CLI: generate typed message keys, check translations in CI, convert i18next or ICU JSON to MessageFormat 2."
+	},
+	"migrate": {
+		"title": "Migrate to MessageFormat 2 from svelte-i18n and i18next",
+		"description": "Convert i18next and ICU MessageFormat JSON to MessageFormat 2 with one CLI command, then fix what the converter flags."
+	},
+	"compare": {
+		"title": "Svelte i18n libraries compared (2026)",
+		"description": "svelte-i18n, Sveltia I18n, sveltekit-i18n, Paraglide, typesafe-i18n, wuchale and svelte-dialect side by side: runes, types, SSR, routing and message format."
+	}
+}

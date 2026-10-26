@@ -1,0 +1,164 @@
+{
+	"name": "svelte-dialect",
+	"version": "0.1.0",
+	"description": "Svelte 5 and SvelteKit i18n on MessageFormat 2 (MF2): runes, typed message keys, locale in the URL, SSR-safe per-request locale detection, lazy-loaded translations, rich text",
+	"author": {
+		"name": "krowten",
+		"email": "me@krowten.dev",
+		"url": "https://github.com/krowten"
+	},
+	"license": "MIT",
+	"homepage": "https://krowten.github.io/svelte-dialect/",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/krowten/svelte-dialect.git"
+	},
+	"bugs": {
+		"url": "https://github.com/krowten/svelte-dialect/issues"
+	},
+	"scripts": {
+		"dev": "vite dev",
+		"build": "npm run build:docs && npm run prepack",
+		"build:docs": "vite build && bun scripts/markdown.ts",
+		"build:ssr": "ADAPTER=node VITE_PRERENDER=false vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"prepack": "svelte-kit sync && svelte-package && publint",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write .",
+		"test:unit": "vitest",
+		"test": "npm run test:unit -- --run && npm run test:e2e",
+		"test:e2e": "playwright install chromium && npm run build && npm run build:ssr && playwright test",
+		"prepublishOnly": "bun run lint && bun run check && bun run test:unit -- --run",
+		"typegen": "bun src/lib/cli/index.ts typegen --messages src/lib/messages --messages src/lib/messages-lazy --out src/lib/i18n-keys.d.ts",
+		"check:i18n": "bun src/lib/cli/index.ts check --messages src/lib/messages --messages src/lib/messages-lazy --src src/routes"
+	},
+	"files": [
+		"dist",
+		"!dist/**/*.test.*",
+		"!dist/**/*.spec.*",
+		"!dist/i18n.*",
+		"!dist/messages",
+		"!dist/messages-lazy",
+		"!dist/i18n-keys.*",
+		"!dist/**/*.test-d.*"
+	],
+	"sideEffects": [
+		"**/*.css"
+	],
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
+		},
+		"./kit": {
+			"types": "./dist/kit.d.ts",
+			"svelte": "./dist/kit.js"
+		},
+		"./entries": {
+			"types": "./dist/entries.d.ts",
+			"default": "./dist/entries.js"
+		},
+		"./sv": {
+			"types": "./dist/sv.d.ts",
+			"default": "./dist/sv.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"bin": {
+		"svelte-dialect": "dist/cli/index.js"
+	},
+	"peerDependencies": {
+		"svelte": "^5.0.0",
+		"@sveltejs/kit": "^3.0.0",
+		"sv": "^1.1.1"
+	},
+	"peerDependenciesMeta": {
+		"@sveltejs/kit": {
+			"optional": true
+		},
+		"sv": {
+			"optional": true
+		}
+	},
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"@playwright/test": "^1.60.0",
+		"@sveltejs/adapter-node": "^6.0.0",
+		"@sveltejs/adapter-static": "^4.0.0",
+		"@sveltejs/kit": "^3.1.0",
+		"@sveltejs/package": "^3.0.1",
+		"@sveltejs/sv-utils": "^1.0.2",
+		"@sveltejs/vite-plugin-svelte": "^7.3.1",
+		"@tailwindcss/forms": "^0.5.11",
+		"@tailwindcss/typography": "^0.5.19",
+		"@tailwindcss/vite": "^4.3.0",
+		"@types/node": "^22",
+		"@vitest/browser-playwright": "^4.1.8",
+		"eslint": "^10.4.1",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-svelte": "^3.19.0",
+		"globals": "^17.6.0",
+		"node-html-markdown": "^2.0.0",
+		"playwright": "^1.60.0",
+		"prettier": "^3.8.3",
+		"prettier-plugin-svelte": "^4.1.0",
+		"prettier-plugin-tailwindcss": "^0.8.0",
+		"publint": "^0.3.21",
+		"shiki": "^4.4.3",
+		"sv": "^1.1.1",
+		"svelte": "^5.57.2",
+		"svelte-check": "^4.7.6",
+		"tailwindcss": "^4.3.0",
+		"typescript": "^6.0.3",
+		"typescript-eslint": "^8.60.1",
+		"vite": "^8.3.4",
+		"vitest": "^4.1.8",
+		"vitest-browser-svelte": "^2.1.1"
+	},
+	"keywords": [
+		"svelte",
+		"sveltekit",
+		"svelte5",
+		"runes",
+		"i18n",
+		"internationalization",
+		"localization",
+		"l10n",
+		"translation",
+		"translations",
+		"multilingual",
+		"locale",
+		"messageformat",
+		"messageformat2",
+		"mf2",
+		"icu",
+		"intl",
+		"pluralization",
+		"rtl",
+		"typescript",
+		"type-safe",
+		"ssr",
+		"cli",
+		"sv-add"
+	],
+	"dependencies": {
+		"messageformat": "^4.0.0"
+	},
+	"overrides": {
+		"typescript": "^6.0.3",
+		"@types/node": "^22"
+	},
+	"engines": {
+		"node": ">=22.17"
+	},
+	"imports": {
+		"#lib": "./src/lib/index.js",
+		"#lib/*": "./src/lib/*"
+	}
+}

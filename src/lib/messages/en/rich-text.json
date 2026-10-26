@@ -1,0 +1,17 @@
+{
+	"title": "Rich text",
+	"lead": "A link inside a translated sentence is the classic i18n headache: split the string into three keys and the translator loses word order. MF2 has markup for exactly this, and the Rich component renders it through snippets — the markup name in the message decides which snippet wraps the text.",
+	"demo_title": "Try it",
+	"demo_text": "The link and its target both live in the translation, not in the component:",
+	"cta": "Read {#link to=|/setup|}the docs{/link} before you ship",
+	"options_title": "Options and nesting",
+	"options_text": "A snippet receives a snippet for the markup's contents and the markup's MF2 options — \\{#link to=|/x|\\} becomes \\{ to: '/x' \\} — so a translation can carry per-locale attributes. They are input like any other, so check them before they reach an attribute: the snippets on this page only let a path on this site through. Nesting works to any depth; each level goes through its own snippet:",
+	"nested": "{#b}bold with a {#link to=|/setup|}link{/link} inside it{/b}",
+	"fallback_title": "Missing snippets don't break the page",
+	"fallback_text": "Markup with no matching snippet still renders its contents — so an outdated translation, or one written before a snippet existed, degrades gracefully instead of vanishing:",
+	"unwired": "This sentence has {#glow}unwired markup{/glow} in the middle",
+	"parts_title": "Below Rich",
+	"parts_text": "formatParts(key, params) is the primitive underneath — it returns text / open / close / standalone parts. Reach for it directly if you'd rather render markup with machinery of your own.",
+	"names_title": "Naming markup",
+	"names_text": "Markup names become snippet names, so keep them valid identifiers — \\{#my-link\\} has no writable snippet."
+}

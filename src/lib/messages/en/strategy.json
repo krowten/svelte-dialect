@@ -1,0 +1,16 @@
+{
+	"title": "Choosing the locale",
+	"lead": "The locale is resolved by walking a list of sources, first match winning. Sources that don't apply to the current side are skipped, so the same list works on the server and in the browser.",
+	"default_title": "The default order",
+	"default_text": "url only does anything with routing on. header (Accept-Language) only exists on the server. lang (<html lang>) and navigator only exist in the browser, and lang is ignored when it equals defaultLocale — a prerendered page always says the default, so that value carries no decision.",
+	"custom_title": "Reordering it",
+	"custom_text": "Shorten or reorder the list to suit — never guess from the browser, just the cookie or the default:",
+	"vary_title": "Caching",
+	"vary_text": "When header participates, responses carry Vary: Accept-Language, and when cookie does, Vary: Cookie — so a shared cache never serves one visitor's language to another.",
+	"isolation_title": "Request isolation",
+	"isolation_text": "On the server every request resolves inside its own AsyncLocalStorage context, so concurrent requests with different languages can't bleed into each other — t() and getLocale() inside a render always see that request's locale. Runtimes without async_hooks fall back to a single shared slot instead.",
+	"configure_title": "Locales decided at runtime",
+	"configure_text": "createDialect runs at module import, before an operator's settings table or a boot-time env read can be reached. configure replaces the locale set and the default locale afterwards, and every downstream reader — negotiation, setLocale, reroute, localizeHref — follows the new values.",
+	"configure_when_text": "Call it once on the server at boot, before the first request, and again on the client during app init with whatever the server delivered through page data — configure is idempotent, so re-running it on every navigation costs nothing.",
+	"configure_caveat_text": "locales replaces the set outright rather than merging into it, and defaultLocale has to belong to the resulting set; a call that breaks either rule warns and changes nothing. reroute is the one piece that can't wait for it — SvelteKit calls it synchronously before any load function — so a prefix configure removes stops being a route at all."
+}

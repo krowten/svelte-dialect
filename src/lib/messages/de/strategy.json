@@ -1,0 +1,16 @@
+{
+	"title": "Locale auswählen",
+	"lead": "Die Locale wird bestimmt, indem eine Liste von Quellen durchlaufen wird; der erste Treffer gewinnt. Quellen, die auf der aktuellen Seite nicht zutreffen, werden übersprungen, sodass dieselbe Liste auf dem Server und im Browser funktioniert.",
+	"default_title": "Die Standardreihenfolge",
+	"default_text": "url bewirkt nur etwas, wenn Routing aktiv ist. header (Accept-Language) gibt es nur auf dem Server. lang (<html lang>) und navigator gibt es nur im Browser, wobei lang ignoriert wird, wenn es defaultLocale entspricht — eine prerenderte Seite nennt immer die Standard-Locale, dieser Wert trägt also keine Entscheidung.",
+	"custom_title": "Die Reihenfolge ändern",
+	"custom_text": "Kürze oder ordne die Liste nach Bedarf um — rate etwa nie anhand des Browsers, sondern nimm nur das Cookie oder den Standard:",
+	"vary_title": "Caching",
+	"vary_text": "Wenn header mitspielt, tragen die Antworten Vary: Accept-Language, und wenn cookie mitspielt, Vary: Cookie — damit ein geteilter Cache nie die Sprache eines Besuchers an einen anderen ausliefert.",
+	"isolation_title": "Request-Isolation",
+	"isolation_text": "Auf dem Server wird jeder Request in seinem eigenen AsyncLocalStorage-Kontext aufgelöst, sodass gleichzeitige Requests mit unterschiedlichen Sprachen einander nicht beeinflussen können — t() und getLocale() sehen während eines Renders immer die Locale genau dieses Requests. Laufzeiten ohne async_hooks greifen stattdessen auf einen einzigen gemeinsamen Slot zurück.",
+	"configure_title": "Zur Laufzeit bestimmte Locales",
+	"configure_text": "createDialect läuft beim Modulimport, bevor die Einstellungstabelle eines Betreibers oder eine beim Start gelesene Umgebungsvariable erreichbar ist. configure ersetzt die Menge der Locales und die Standard-Locale nachträglich, und jeder nachgelagerte Leser — Aushandlung, setLocale, reroute, localizeHref — übernimmt die neuen Werte.",
+	"configure_when_text": "Rufe es einmal auf dem Server beim Start auf, vor dem ersten Request, und noch einmal auf dem Client bei der App-Initialisierung mit dem, was der Server über Page Data geliefert hat — configure ist idempotent, ein erneuter Aufruf bei jeder Navigation kostet also nichts.",
+	"configure_caveat_text": "locales ersetzt die Menge vollständig, statt sie zu ergänzen, und defaultLocale muss zur resultierenden Menge gehören; ein Aufruf, der eine der beiden Regeln verletzt, warnt und ändert nichts. reroute ist der einzige Teil, der nicht darauf warten kann — SvelteKit ruft ihn synchron vor jeder Load-Funktion auf —, daher ist ein Präfix, das configure entfernt, überhaupt keine Route mehr."
+}

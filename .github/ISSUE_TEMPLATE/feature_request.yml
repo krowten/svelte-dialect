@@ -1,0 +1,16 @@
+name: Feature request
+description: Suggest an addition or a change to the API
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What are you trying to do, and why is it hard or impossible today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you'd like
+      description: The API or behaviour you have in mind. Code sketches welcome.

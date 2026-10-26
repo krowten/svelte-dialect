@@ -1,0 +1,5 @@
+{
+	"title": "Loaded on demand",
+	"intro": "This namespace is not in the page bundle. It arrives through the loader you configure — here a dynamic import, in your app just as easily a fetch to an API.",
+	"stats": ".input {$count :number}\n.match $count\none {{Available in {$count} language}}\n* {{Available in {$count} languages}}"
+}

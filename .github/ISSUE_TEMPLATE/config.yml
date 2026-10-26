@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Documentation
+    url: https://krowten.github.io/svelte-dialect/
+    about: Setup, guides and the full API reference.

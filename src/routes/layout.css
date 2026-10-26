@@ -1,0 +1,39 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+/* let form controls, scrollbars and UA colours follow the OS theme */
+html {
+	color-scheme: light dark;
+}
+
+body {
+	@apply bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100;
+}
+
+/* Shiki emits both themes as CSS variables in one pass; pick the dark set on a dark scheme.
+   The frame matches the demo's cards, since shiki only colours the text. */
+pre.shiki {
+	@apply overflow-x-auto rounded-xl border border-gray-200 p-5 text-sm dark:border-gray-800;
+}
+
+/* inside CodeBlock the frame belongs to the wrapper, which also holds the header */
+.code-block pre.shiki {
+	@apply rounded-none border-0;
+}
+
+/* running text stays readable; tables, code and cards carry their own widths */
+@layer base {
+	main p {
+		max-width: 70ch;
+		overflow-wrap: break-word;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	pre.shiki,
+	pre.shiki span {
+		color: var(--shiki-dark) !important;
+		background-color: var(--shiki-dark-bg) !important;
+	}
+}

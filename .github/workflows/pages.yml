@@ -1,0 +1,50 @@
+# Builds the docs site and deploys it to GitHub Pages. Manual only for now: run it from the Actions
+# tab once Pages is enabled (Settings → Pages → Source: GitHub Actions). Add `push: branches: [main]`
+# to redeploy on every change after that.
+name: Pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # a hung step (a stalled apt mirror, say) would otherwise hold the runner for 6 hours
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      # vite and svelte-kit run under Node, and SvelteKit 3 needs 22.17+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      # served from https://<owner>.github.io/<repo>/, so every path needs the repo as its base
+      - run: bun run build:docs
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    # a hung step (a stalled apt mirror, say) would otherwise hold the runner for 6 hours
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

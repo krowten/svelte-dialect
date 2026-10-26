@@ -1,0 +1,24 @@
+# svelte-dialect
+
+> Small i18n library for Svelte 5 and SvelteKit 3 built on MessageFormat 2 (MF2). The locale is a rune, not a store. It types message keys with a codegen CLI, negotiates the locale on the server, can put it in the URL (/de/about), loads translation namespaces on demand, and renders markup inside translations through Svelte snippets. Install with `npm install svelte-dialect`, or set a SvelteKit 3 project up in one step with `npx sv add svelte-dialect`; SvelteKit apps import from `svelte-dialect/kit`, apps without SvelteKit from `svelte-dialect`.
+
+Each docs link below is the Markdown version of a page; drop `.md` for the HTML one. The whole documentation in one file: [llms-full.txt](https://krowten.github.io/svelte-dialect/llms-full.txt).
+
+## Docs
+
+- [Setup](https://krowten.github.io/svelte-dialect/setup.md): install, `createDialect`, the `handle` and `reroute` hooks, using `t()`
+- [Message files](https://krowten.github.io/svelte-dialect/messages.md): MessageFormat 2 syntax, plurals, selectors, number, currency and date formatting, broken messages
+- [Loading messages](https://krowten.github.io/svelte-dialect/sources.md): build-time glob, lazy per-namespace chunks, `loadTranslations`, loading from an API or a database with remote functions or `fetch`
+- [Locale in the URL](https://krowten.github.io/svelte-dialect/routing.md): locale prefix routing with `reroute`, `localizeHref`, base path, prerendering every locale with `localizedEntries`
+- [Choosing the locale](https://krowten.github.io/svelte-dialect/strategy.md): detection order (URL, cookie, `<html lang>`, Accept-Language, navigator, default), per-request isolation, locales decided at runtime with `configure`
+- [Rich text](https://krowten.github.io/svelte-dialect/rich-text.md): MF2 markup such as `{#link}…{/link}` rendered with the `Rich` component and snippets
+- [Typed keys & CLI](https://krowten.github.io/svelte-dialect/typed-keys.md): `svelte-dialect typegen`, strict parameters, `check` for missing translations, `migrate` from i18next and ICU MessageFormat JSON
+- [API reference](https://krowten.github.io/svelte-dialect/api.md): every export and every `createDialect` option
+- [CLI reference](https://krowten.github.io/svelte-dialect/cli.md): `typegen`, `check` and `migrate` with every flag and exit code
+- [Migrating to MF2](https://krowten.github.io/svelte-dialect/migrate.md): moving from svelte-i18n or i18next with the `migrate` CLI, and mapping the runtime API
+- [Compared to others](https://krowten.github.io/svelte-dialect/compare.md): svelte-dialect next to svelte-i18n, Sveltia I18n, sveltekit-i18n, Paraglide JS, typesafe-i18n and wuchale
+
+## Source
+
+- [README](https://github.com/krowten/svelte-dialect#readme): quickstart, plus setup without SvelteKit
+- [Changelog](https://github.com/krowten/svelte-dialect/blob/main/CHANGELOG.md)

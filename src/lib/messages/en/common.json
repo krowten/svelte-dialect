@@ -1,0 +1,49 @@
+{
+	"nav": {
+		"toggle": "Toggle navigation",
+		"close": "Close",
+		"skip": "Skip to content",
+		"pager": "Previous and next page",
+		"previous": "Previous",
+		"next": "Next",
+		"language": "Language",
+		"github": "GitHub",
+		"groups": {
+			"start": "Get started",
+			"guides": "Guides",
+			"reference": "Reference"
+		},
+		"setup": "Setup",
+		"messages": "Message files",
+		"sources": "Loading messages",
+		"routing": "Locale in the URL",
+		"strategy": "Choosing the locale",
+		"rich": "Rich text",
+		"typed": "Typed keys & CLI",
+		"api": "API reference",
+		"cli": "CLI reference",
+		"migrate": "Migrating to MF2",
+		"compare": "Compared to others",
+		"changelog": "Changelog",
+		"sections": "Documentation"
+	},
+	"heading": {
+		"permalink": "Link to “{$title}”"
+	},
+	"toc": {
+		"title": "On this page"
+	},
+	"code": {
+		"copy": "Copy",
+		"copied": "Copied"
+	},
+	"callout": {
+		"required": "Required",
+		"note": "Note"
+	},
+	"error": {
+		"not_found": "This page doesn't exist",
+		"failed": "Something went wrong",
+		"home": "Back to the start"
+	}
+}

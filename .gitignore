@@ -1,0 +1,39 @@
+node_modules
+
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
+/build-node
+/dist
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+# Playwright
+test-results
+
+# Machine-local files — never part of the repo, on any machine
+.npmrc
+.claude/settings.local.json
+CLAUDE.local.md
+TODO.md
+
+# MCP browser artifacts
+.playwright-mcp
+
+# npm pack artefacts — sandbox installs leave these behind
+*.tgz

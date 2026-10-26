@@ -1,0 +1,21 @@
+{
+	"title": "Locale in der URL",
+	"lead": "Standardmäßig steckt die Locale in einem Cookie, und die URL ändert sich nie. Mit routing: true bekommt stattdessen jede Locale außer der Standard-Locale ein eigenes Pfadpräfix.",
+	"prefix_title": "Das Präfix",
+	"prefix_text": "Es wird genauso geschrieben wie die Locale selbst: locales: ['en-US', 'de-DE'] ergibt /en-US/some/url. Willst du lieber /de/, nenne die Locale de — eine zweite Zuordnung, die synchron bleiben müsste, gibt es nicht.",
+	"wiring_title": "Drei Teile zum Einbinden",
+	"wiring_text": "handle aus der Einrichtung bleibt unverändert: Es liest das URL-Präfix bereits, sobald Routing aktiv ist. reroute kommt in eine eigene, universelle src/hooks.ts (nicht hooks.server.ts) — es entfernt das Präfix, bevor SvelteKit die Routen abgleicht, daher brauchen deine Route-Dateien kein [locale]-Verzeichnis.",
+	"url_text": "reroute entscheidet nur, welche Route eine Anfrage trifft; die URL selbst behält ihr Präfix. event.url, die url einer Load-Funktion und page.url lauten deshalb /de-DE/about, genau wie in der Adresszeile. Zum Vergleich mit einer Route nimm route.id (/about) – darin steht nie eine Locale. Das gilt erst recht für Zugriffsprüfungen in Hooks: /de-DE/admin rendert dieselbe Route wie /admin, ein Guard auf event.url.pathname lässt es also durch.",
+	"base_title": "Auslieferung aus einem Unterverzeichnis",
+	"base_text": "Setze paths.base wie gewohnt: svelte-dialect/kit liest es selbstständig aus, und das Locale-Präfix wird nach dem Basispfad gesucht, nicht anstelle davon.",
+	"linking_title": "Verlinken",
+	"linking_text": "Nutze localizeHref für interne Links — ein nacktes href würde die Locale bei der Navigation verlieren. Es stellt die aktuelle Locale voran, und die Standard-Locale bekommt immer den Pfad ohne Präfix. Das ist gewöhnliche Navigation innerhalb einer Locale und braucht nie ein vollständiges Neuladen der Seite.",
+	"switch_title": "Locale wechseln",
+	"switch_text": "setLocale weiß bereits, ob Routing aktiv ist: Ist es das, führt der Wechsel auf dieselbe Seite unter dem neuen Präfix — bewusst eine vollständige Navigation, damit das ausgelieferte Dokument, die URL und die Laufzeit übereinstimmen.",
+	"try_title": "Probier es aus",
+	"try_text": "Diese Seite in jeder Locale:",
+	"prerender_title": "Prerendering der Adressen mit Präfix",
+	"prerender_text": "Ein statischer Build rendert nur, was der Crawler erreichen kann, und von den Seiten der Standard-Locale, bei denen er startet, verlinkt nichts auf /ru/.... localizedEntries vervielfacht deine Einstiegspfade über alle Locales für prerender.entries — ein funktionierendes Beispiel findest du in der vite.config.ts der Demo.",
+	"meaning_title": "Was die URL bedeutet",
+	"meaning_text": "Das Präfix hat Vorrang vor Cookie und Accept-Language: Eine URL ist die ausdrückliche Anforderung einer bestimmten Version der Seite. Die Standard-Locale hat genau eine Adresse — /de-DE/some/url antwortet mit 308 auf /some/url, wenn de-DE die Standard-Locale ist. Mit detectOnBarePath: true antwortet ein Dokumentaufruf von /about, dessen Cookie oder Accept-Language ru nennt, stattdessen mit 307 auf /ru/about — standardmäßig aus, denn ohne diese Option IST der Pfad ohne Präfix schlicht die Standard-Locale."
+}

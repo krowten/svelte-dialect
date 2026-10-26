@@ -1,0 +1,17 @@
+{
+	"title": "Message-Dateien",
+	"lead": "Ein flaches oder verschachteltes JSON-Objekt pro Namespace, eine Datei pro Locale. Schlüssel haben die Form namespace:dot.path; verschachtelte Objekte werden zu Punktpfaden verflacht.",
+	"layout_title": "Aufbau und Schlüssel",
+	"layout_text": "src/lib/messages/<locale>/<namespace>.json. Aus \\{ \"nav\": \\{ \"home\": \"Startseite\" \\} \\} wird t('common:nav.home').",
+	"params_title": "Parameter",
+	"params_text": "\\{$name\\} setzt einen Wert ein, der als zweites Argument an t übergeben wird.",
+	"plurals_title": "Plurale und Selektoren",
+	"plurals_text": "Mit .match wählt MF2 anhand des Werts einen Zweig — nach Plural-Kategorien, nicht nur one/other, und diese stammen aus den Regeln der jeweiligen Locale, nicht aus der Bibliothek.",
+	"numbers_title": "Zahlen, Datum und Geld",
+	"numbers_text": "Die Formatierung ist Intl in MF2-Schreibweise: Dieselbe Nachricht rendert €1,234.50 auf Englisch und 1.234,50 € auf Deutsch, ohne dass dein Code etwas Locale-Spezifisches enthält. In jeder Nachricht verfügbar: :number, :integer, :offset, :string (Pflicht), dazu :currency, :date, :datetime, :time, :percent, :unit (Entwurf).",
+	"errors_title": "Wenn eine Nachricht Probleme macht",
+	"errors_text": "Es wird nie eine Exception geworfen. Eine Quelle, die sich nicht kompilieren lässt, wird als ihr eigener Schlüssel gerendert; bei einem fehlenden Parameter bleibt der Fallback-Text von MF2 stehen. Fehlt ein Schlüssel in der aktiven Locale, durchläuft er eine Kette: Varianten derselben Sprache, dann defaultLocale, dann der Schlüssel selbst.",
+	"demo_items": ".input {$count :number}\n.match $count\none {{{$count} Eintrag}}\n* {{{$count} Einträge}}",
+	"demo_price": "Gesamt: {$amount :currency currency=EUR}",
+	"demo_due": "Fällig am {$when :date length=long}"
+}

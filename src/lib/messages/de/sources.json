@@ -1,0 +1,21 @@
+{
+	"title": "Messages laden",
+	"lead": "Drei Wege, Messages hineinzubekommen, und zwei Muster, um eine Seite darauf warten zu lassen. Sie lassen sich kombinieren: Bündle, was jede Seite braucht, und hol den Rest nach.",
+	"build_title": "1. Zur Build-Zeit",
+	"build_eager_text": "Der Standard. import.meta.glob liest die Dateien beim Kompilieren und bettet sie ein — kein Request zur Laufzeit, nichts zu konfigurieren.",
+	"build_lazy_text": "Lass eager: true im selben Glob weg, und jeder Namespace wird zu einem eigenen Chunk, der beim ersten Zugriff einer Seite geladen wird. Beide Varianten können im selben messages-Objekt stehen.",
+	"demand_title": "2. Bei Bedarf",
+	"demand_lead": "Zwei Muster, um vor dem Rendern auf einen Namespace zu warten. Unten verwendet je eine Seite eines davon — lade neu, um beide laufen zu sehen.",
+	"load_title": "In einer Load-Funktion",
+	"load_text": "Eine universelle Load-Funktion darf alles zurückgeben, auch die Funktion t selbst. Funktioniert mit stabilem SvelteKit, ohne Compiler-Flags.",
+	"component_title": "In der Komponente",
+	"component_text": "Direkt im <script> mit await.",
+	"component_note": "Dafür brauchst du Svelte 5.36+ und compilerOptions.experimental.async.",
+	"api_title": "3. Aus deiner eigenen API",
+	"remote_title": "SvelteKit Remote Functions",
+	"remote_text": "Eine query(), die wie eine lokale Funktion aufgerufen und in deinem Loader ausgeführt wird — kein Endpunkt zu schreiben, kein fetch, bei dem etwas schiefgehen kann. Erfordert kit.experimental.remoteFunctions und compilerOptions.experimental.async.",
+	"fetch_title": "Einfaches fetch",
+	"fetch_text": "Die portable Variante: keine experimentellen Flags, funktioniert beim SSR, sofern die URL absolut ist — auf dem Server gibt es keine Seite, auf die sich eine relative URL beziehen könnte.",
+	"dedupe_title": "Ein Aufruf, egal wie viele Requests",
+	"dedupe_text": "Gleichzeitige Aufrufer für dieselbe Locale und denselben Namespace teilen sich einen laufenden Loader-Aufruf, sodass hundert gleichzeitige SSR-Requests einen fetch auslösen, nicht hundert."
+}

@@ -1,0 +1,17 @@
+{
+	"title": "Typed keys & CLI",
+	"lead": "t('home:titel') compiles and renders the key, because TypeScript can't know your catalog on its own. Generate a union from the same files the runtime reads, and it does.",
+	"generate_title": "Generating the types",
+	"generate_text": "Run the CLI against your message files and hand the result to createDialect. Known keys now autocomplete, while any plain string still compiles, so keys that only exist at runtime, such as one coming from a database, keep working. The flip side: a misspelled key compiles too. svelte-dialect check is what catches it (see below).",
+	"params_title": "Strict parameters",
+	"params_text": "The generated file also exports MessageParams. Pass it as the second generic and the parameters a message names become part of t's signature — a call missing one, or misspelling one, is now a type error instead of silent fallback text at runtime.",
+	"params_note": "Both generics are additive: omit either and every call stays exactly as permissive as it was.",
+	"snapshot_title": "Keys from a database",
+	"snapshot_text": "Types are a snapshot of what generation saw. For a catalog that lives elsewhere, export a \\{locale: \\{namespace: \\{…\\}\\}\\} dump and point typegen --from-json at it, then regenerate whenever the dump changes.",
+	"cli_title": "The CLI",
+	"cli_lead": "Three commands, configured entirely by flags rather than a config file. --messages may repeat on all three, for when bundled and lazy trees live apart. Every flag and exit code is in the {#cli}CLI reference{/cli}.",
+	"check_title": "check",
+	"check_text": "Scans your source for t('ns:key') literals and reports keys missing from any locale (exit 1, so it belongs in CI) and, with --unused, catalog keys nothing references. Keys built from variables are invisible to a static scan, so it reports honestly on what it can see.",
+	"migrate_title": "migrate",
+	"migrate_text": "Rewrites \\{\\{name\\}\\}-style i18next interpolations, collapses key_one/key_other plural suffixes into MF2 .match, and parses the common ICU MessageFormat constructs. Every produced string is validated against the real MF2 parser before it is written; anything it can't convert is left untouched and reported. Run with --dry-run first to see the before/after pairs."
+}

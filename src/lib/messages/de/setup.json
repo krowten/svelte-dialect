@@ -1,0 +1,21 @@
+{
+	"title": "Einrichtung",
+	"lead": "Jeder der folgenden Schritte ist für die Konfiguration nötig, mit der diese Seite läuft — Locale in der URL, zwischen den Besuchen in einem Cookie gemerkt. Geh sie der Reihe nach durch, und der letzte bringt eine übersetzte Zeile auf die Seite.",
+	"install_title": "Installation",
+	"requires_text": "Voraussetzung ist Svelte 5 und, für dieses Setup, SvelteKit 3. Ohne SvelteKit importierst du createDialect stattdessen aus svelte-dialect und lässt die Hooks weg: Messages, t() und Lazy-Namespaces funktionieren gleich, URL-Routing und die serverseitige Aushandlung brauchen jedoch Kit.",
+	"sv_add_text": "Oder überlass die Schritte 1–5 der Svelte CLI: Sie fragt nach Locales und Routing, trägt das Paket als Abhängigkeit ein, legt src/lib/i18n.ts und pro Locale eine common.json an und bindet beide Hooks und app.html ein. Ein vorhandener handle wird in sequence() eingehängt, vorhandene Dateien bleiben unangetastet. Die Schritte unten zeigen, was sie schreibt.",
+	"messages_title": "Eine Nachricht schreiben",
+	"messages_text": "Eine JSON-Datei pro Locale und Namespace unter src/lib/messages/<locale>/<namespace>.json. Der Wert ist MessageFormat 2; für eine zweite Sprache legst du eine ru/common.json mit demselben Schlüssel an.",
+	"dialect_title": "Den Dialect erzeugen",
+	"dialect_text": "Einmalig in src/lib/i18n.ts. routing legt die Locale in die URL; ohne diese Option funktionieren alle folgenden Exporte weiterhin, nur eben in einem reinen Cookie-Setup ohne Präfix.",
+	"handle_title": "Der handle-Hook",
+	"handle_text": "SvelteKit ruft ihn bei jedem Request auf. Er handelt die Locale aus — zuerst das URL-Präfix, dann das Cookie, dann Accept-Language — und schreibt sie in die Antwort, während die Seite hinausgestreamt wird.",
+	"reroute_title": "Der reroute-Hook",
+	"reroute_text": "Kommt in src/hooks.ts — universell, nicht in hooks.server.ts. Er entfernt das Präfix, bevor SvelteKit die Routen abgleicht, sodass /ru/about src/routes/about rendert, ohne dass du ein [locale]-Verzeichnis anlegen musst.",
+	"apphtml_title": "Das Dokument",
+	"apphtml_text": "handle füllt diese beiden Platzhalter, während die Seite gerendert wird.",
+	"use_title": "Benutzen",
+	"use_text": "Importiere t, wo du willst. Starte den Dev-Server: Die Seite zeigt „Hello, world!“, und /ru zeigt die russische Zeile, sobald ru/common.json existiert.",
+	"next_title": "Wie es weitergeht",
+	"next_text": "Damit steht die Grundlage: Schreibe weitere {#messages}Message-Dateien{/messages} und lies dann nach, wie {#routing}das URL-Präfix und das Cookie{/routing} darüber entscheiden, welche Locale ein Besucher sieht."
+}
