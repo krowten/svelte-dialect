@@ -37,7 +37,8 @@ npx sv add svelte-dialect
 
 It asks for your locales and whether the locale goes in the URL, adds the package, writes
 `src/lib/i18n.ts` and a `common.json` per locale, and wires `handle`, `reroute` and `app.html`. An
-existing `handle` is wrapped in `sequence()`, and files you already have are left alone. The rest of
+existing `handle` is wrapped in `sequence()`, and files you already have are left alone. To skip the
+prompts, pass the answers inline: `npx sv add svelte-dialect=locales:en,de+routing:yes`. The rest of
 this section is what it writes, for doing it by hand.
 
 Create the dialect once in **`src/lib/i18n.ts`**, from your message files, with the locale routed in

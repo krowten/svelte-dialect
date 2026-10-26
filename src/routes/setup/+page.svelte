@@ -17,18 +17,35 @@
 		{ key: 'use', sample: data.useCode }
 	] as const);
 
+	// what `npx sv add svelte-dialect` does, one list item each: `setup:cli_<key>`
+	const cliSteps = ['deps', 'dialect', 'messages', 'hooks', 'html'] as const;
+
 	const linkClass = 'text-gray-900 underline dark:text-gray-100';
+	const text = 'mt-4 text-gray-600 dark:text-gray-300';
 </script>
 
 <h1 class="text-3xl font-bold tracking-tight">{t('setup:title')}</h1>
 <p class="mt-3 text-gray-600 dark:text-gray-300">{t('setup:lead')}</p>
 
 <section class="mt-10">
+	<Heading level={2} id="cli" text={t('setup:cli_title')} />
+	<p class="mt-2 text-gray-600 dark:text-gray-300">{t('setup:cli_lead')}</p>
+	<CodeBlock class="mt-3" sample={data.svAddCode} />
+	<p class={text}>{t('setup:cli_then')}</p>
+	<ul class="mt-2 list-disc space-y-1 pl-5 text-gray-600 dark:text-gray-300">
+		{#each cliSteps as key (key)}
+			<li>{t(`setup:cli_${key}`)}</li>
+		{/each}
+	</ul>
+	<p class={text}>{t('setup:cli_skip')}</p>
+	<CodeBlock class="mt-3" sample={data.svAddArgsCode} />
+	<p class={text}>{t('setup:cli_manual')}</p>
+</section>
+
+<section class="mt-10">
 	<Heading level={2} id="install" text={t('setup:install_title')} />
 	<CodeBlock class="mt-3" sample={data.installCode} />
 	<p class="mt-2 text-sm text-gray-500 dark:text-gray-400">{t('setup:requires_text')}</p>
-	<p class="mt-4 text-gray-600 dark:text-gray-300">{t('setup:sv_add_text')}</p>
-	<CodeBlock class="mt-3" sample={data.svAddCode} />
 </section>
 
 {#each steps as { key, sample }, i (key)}

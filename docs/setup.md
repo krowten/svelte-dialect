@@ -4,19 +4,37 @@
 
 Every step below is required for the configuration this site runs — locale in the URL, remembered in a cookie between visits. Follow them in order and the last one puts a translated line on the page.
 
+## Set up with the Svelte CLI
+
+In an existing SvelteKit 3 project, one command does steps 1–5 below:
+
+```sh
+npx sv add svelte-dialect   # or: bunx sv add svelte-dialect / pnpm dlx sv add svelte-dialect
+```
+
+It asks for your locales (the first one is the default) and whether the locale goes in the URL, then:
+
+* adds svelte-dialect to dependencies;
+* writes src/lib/i18n.ts with createDialect;
+* writes src/lib/messages/<locale>/common.json for every locale, with one greeting to translate;
+* exports handle from src/hooks.server.ts, wrapping a handle you already have in sequence(), and, with the locale in the URL, reroute from src/hooks.ts;
+* adds the lang and dir placeholders to the <html> tag in src/app.html.
+
+Files you already have are left as they are. To skip the prompts, pass the answers inline:
+
+```sh
+npx sv add svelte-dialect=locales:en,de+routing:yes
+```
+
+Then render a message as in step 6\. The sections below are the same setup done by hand.
+
 ## Install
 
 ```sh
-npm install svelte-dialect
+npm install svelte-dialect   # or: bun add svelte-dialect / pnpm add svelte-dialect
 ```
 
 Requires Svelte 5 and, for this setup, SvelteKit 3\. Without SvelteKit, import createDialect from svelte-dialect instead and skip the hooks: messages, t() and lazy namespaces work the same, while URL routing and server-side negotiation need Kit.
-
-Or let the Svelte CLI do steps 1–5: it asks for your locales and routing, adds the package, writes src/lib/i18n.ts and a common.json per locale, and wires both hooks and app.html. An existing handle is wrapped in sequence(); files you already have are left alone. The steps below are what it writes.
-
-```sh
-npx sv add svelte-dialect
-```
 
 ## 1\. Write a message
 

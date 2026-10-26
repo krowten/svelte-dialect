@@ -2,9 +2,11 @@ import type { PageServerLoad } from './$types.js';
 
 import { highlight } from '../highlight.server.js';
 
-const INSTALL = `npm install svelte-dialect`;
+const INSTALL = `npm install svelte-dialect   # or: bun add svelte-dialect / pnpm add svelte-dialect`;
 
-const SV_ADD = `npx sv add svelte-dialect`;
+const SV_ADD = `npx sv add svelte-dialect   # or: bunx sv add svelte-dialect / pnpm dlx sv add svelte-dialect`;
+
+const SV_ADD_ARGS = `npx sv add svelte-dialect=locales:en,de+routing:yes`;
 
 const MESSAGES = `// src/lib/messages/en/common.json
 { "greeting": "Hello, {$name}!" }`;
@@ -43,6 +45,7 @@ const USE = `<!-- src/routes/+page.svelte -->
 export const load: PageServerLoad = async () => ({
 	installCode: await highlight(INSTALL, 'sh'),
 	svAddCode: await highlight(SV_ADD, 'sh'),
+	svAddArgsCode: await highlight(SV_ADD_ARGS, 'sh'),
 	messagesCode: await highlight(MESSAGES, 'jsonc'),
 	dialectCode: await highlight(DIALECT, 'ts'),
 	handleCode: await highlight(HANDLE, 'ts'),
