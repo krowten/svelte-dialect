@@ -54,9 +54,9 @@ export const { t, handle, reroute, localizeHref, locales } = createDialect({
 });
 ```
 
-The locale lives in a `dialect` cookie by default (400-day max age) and doubles as the fallback the
-next time a visitor arrives at a bare URL — no cookie means the URL prefix decides, a cookie means it
-wins on unprefixed pages.
+The locale lives in a `dialect` cookie by default (400-day max age). A URL prefix always wins. On an
+unprefixed URL the cookie decides, and without one the server negotiates `Accept-Language` (on a
+static site, the browser language), falling back to `defaultLocale`.
 
 Wire up `handle` in **`src/hooks.server.ts`**, typed the way SvelteKit expects:
 

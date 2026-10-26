@@ -1,9 +1,10 @@
-# Builds the docs site and deploys it to GitHub Pages. Manual only for now: run it from the Actions
-# tab once Pages is enabled (Settings → Pages → Source: GitHub Actions). Add `push: branches: [main]`
-# to redeploy on every change after that.
+# Builds the docs site and deploys it to GitHub Pages on every push to main (and by hand from the
+# Actions tab).
 name: Pages
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:

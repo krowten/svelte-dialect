@@ -79,4 +79,4 @@ localizedEntries(['/', '/about'], { locales: ['en', 'ru'], defaultLocale: 'en' }
 
 ## What the URL means
 
-The prefix outranks cookie and Accept-Language: a URL is an explicit request for a specific version of the page. The default locale has exactly one address — /de-DE/some/url when de-DE is the default answers 308 to /some/url. With detectOnBarePath: true, a document visit to /about whose cookie or Accept-Language says ru answers 307 to /ru/about instead — off by default, since without it the bare path simply IS the default locale.
+The prefix outranks cookie and Accept-Language: a URL is an explicit request for a specific version of the page. The default locale has exactly one address — /de-DE/some/url when de-DE is the default answers 308 to /some/url. With detectOnBarePath: true, a document visit to /about whose cookie or Accept-Language says ru answers 307 to /ru/about instead — off by default. Without it the bare path keeps its address and renders the locale the cookie or Accept-Language picked, the browser language on a static site, and the default locale only when none of them names one you offer.
