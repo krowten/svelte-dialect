@@ -109,6 +109,7 @@ export type MessageKey =
 	| 'common:nav.strategy'
 	| 'common:nav.toggle'
 	| 'common:nav.typed'
+	| 'common:new_tab'
 	| 'common:toc.title'
 	| 'compare:col_api'
 	| 'compare:col_bundle'

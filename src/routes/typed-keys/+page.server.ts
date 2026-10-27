@@ -4,11 +4,11 @@ import { highlight } from '../highlight.server.js';
 
 const GENERATE = `npx svelte-dialect typegen --messages src/lib/messages --out src/lib/i18n-keys.d.ts`;
 
-const KEYS = `import type { MessageKey } from './i18n-keys.js';
+const KEYS = `import type { MessageKey } from './i18n-keys';
 
 export const { t, loadTranslations } = createDialect<MessageKey>({ … });`;
 
-const PARAMS = `import type { MessageKey, MessageParams } from './i18n-keys.js';
+const PARAMS = `import type { MessageKey, MessageParams } from './i18n-keys';
 
 export const { t } = createDialect<MessageKey, MessageParams>({ … });
 

@@ -20,7 +20,7 @@ const { data }: PageProps = $props();
 <h1>{data.t('billing:title')}</h1>`;
 
 const COMPONENT = `// in the component's script, with experimental.async on
-import { loadTranslations } from '#lib/i18n.js';
+import { loadTranslations } from '#lib/i18n.ts';
 
 const { t } = await loadTranslations('dashboard');
 

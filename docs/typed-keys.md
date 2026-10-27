@@ -13,7 +13,7 @@ npx svelte-dialect typegen --messages src/lib/messages --out src/lib/i18n-keys.d
 Run the CLI against your message files and hand the result to createDialect. Known keys now autocomplete, while any plain string still compiles, so keys that only exist at runtime, such as one coming from a database, keep working. The flip side: a misspelled key compiles too. svelte-dialect check is what catches it (see below).
 
 ```ts
-import type { MessageKey } from './i18n-keys.js';
+import type { MessageKey } from './i18n-keys';
 
 export const { t, loadTranslations } = createDialect<MessageKey>({ … });
 ```
@@ -23,7 +23,7 @@ export const { t, loadTranslations } = createDialect<MessageKey>({ … });
 The generated file also exports MessageParams. Pass it as the second generic and the parameters a message names become part of t's signature — a call missing one, or misspelling one, is now a type error instead of silent fallback text at runtime.
 
 ```ts
-import type { MessageKey, MessageParams } from './i18n-keys.js';
+import type { MessageKey, MessageParams } from './i18n-keys';
 
 export const { t } = createDialect<MessageKey, MessageParams>({ … });
 

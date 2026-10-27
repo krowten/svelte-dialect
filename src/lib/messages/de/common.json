@@ -45,5 +45,6 @@
 		"not_found": "Diese Seite gibt es nicht",
 		"failed": "Etwas ist schiefgelaufen",
 		"home": "Zur Startseite"
-	}
+	},
+	"new_tab": "(öffnet in einem neuen Tab)"
 }

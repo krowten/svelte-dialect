@@ -45,5 +45,6 @@
 		"not_found": "This page doesn't exist",
 		"failed": "Something went wrong",
 		"home": "Back to the start"
-	}
+	},
+	"new_tab": "(opens in a new tab)"
 }

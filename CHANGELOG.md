@@ -2,6 +2,13 @@
 
 All notable, user-visible changes to `svelte-dialect`.
 
+## 0.1.1
+
+- `npx sv add svelte-dialect` imports `#lib/i18n.ts` in the hooks of a
+  TypeScript project, the file it actually wrote (`#lib/i18n.js` in a
+  JavaScript one). The README and docs examples import `.ts` too.
+- The README shows how to pass the `sv add` answers inline.
+
 ## 0.1.0
 
 First public release.

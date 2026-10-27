@@ -244,7 +244,7 @@ const SI_COMPONENT_BEFORE = `<script>
 <button onclick={() => locale.set('ru')}>RU</button>`;
 
 const SI_COMPONENT_AFTER = `<script lang="ts">
-	import { t, setLocale } from '#lib/i18n.js';
+	import { t, setLocale } from '#lib/i18n.ts';
 </script>
 
 <h1>{t('common:cart.items', { count: 3 })}</h1>

@@ -332,7 +332,7 @@ In components, $\_ becomes t, the values wrapper disappears and the key gains it
 
 ```svelte
 <script lang="ts">
-	import { t, setLocale } from '#lib/i18n.js';
+	import { t, setLocale } from '#lib/i18n.ts';
 </script>
 
 <h1>{t('common:cart.items', { count: 3 })}</h1>

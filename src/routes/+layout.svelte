@@ -159,15 +159,19 @@
 			<a
 				class="hidden text-sm text-gray-500 hover:text-gray-900 sm:inline dark:text-gray-400 dark:hover:text-gray-100"
 				href="https://github.com/krowten/svelte-dialect/blob/main/CHANGELOG.md"
+				target="_blank"
+				rel="noopener noreferrer"
 				title={t('common:nav.changelog')}
 			>
-				v{pkg.version}
+				v{pkg.version}<span class="sr-only"> {t('common:new_tab')}</span>
 			</a>
 			<a
 				class="hidden text-sm text-gray-500 hover:text-gray-900 sm:inline dark:text-gray-400 dark:hover:text-gray-100"
 				href="https://github.com/krowten/svelte-dialect"
+				target="_blank"
+				rel="noopener noreferrer"
 			>
-				{t('common:nav.github')}
+				{t('common:nav.github')}<span class="sr-only"> {t('common:new_tab')}</span>
 			</a>
 		</div>
 	</div>

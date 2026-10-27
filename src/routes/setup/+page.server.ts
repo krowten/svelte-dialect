@@ -22,13 +22,13 @@ export const { t, handle, reroute, localizeHref, locales } = createDialect({
 
 const HANDLE = `// src/hooks.server.ts
 import type { Handle } from '@sveltejs/kit/hooks';
-import { handle as dialect } from '#lib/i18n.js';
+import { handle as dialect } from '#lib/i18n.ts';
 
 export const handle: Handle = dialect;`;
 
 const REROUTE = `// src/hooks.ts — universal, not hooks.server.ts
 import type { Reroute } from '@sveltejs/kit/hooks';
-import { reroute as dialect } from '#lib/i18n.js';
+import { reroute as dialect } from '#lib/i18n.ts';
 
 export const reroute: Reroute = dialect;`;
 
@@ -37,7 +37,7 @@ const APPHTML = `<!-- src/app.html -->
 
 const USE = `<!-- src/routes/+page.svelte -->
 <script lang="ts">
-	import { t } from '#lib/i18n.js';
+	import { t } from '#lib/i18n.ts';
 </script>
 
 <p>{t('common:greeting', { name: 'world' })}</p>`;

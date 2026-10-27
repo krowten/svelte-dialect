@@ -10,7 +10,7 @@ const CUSTOM = `createDialect({
 });`;
 
 const CONFIGURE_SERVER = `// src/hooks.server.ts — top-level await runs before the first request
-import { configure, handle as dialect } from '#lib/i18n.js';
+import { configure, handle as dialect } from '#lib/i18n.ts';
 
 const settings = await loadLocaleSettings();
 configure({ defaultLocale: settings.defaultLocale, locales: settings.locales });
@@ -18,7 +18,7 @@ configure({ defaultLocale: settings.defaultLocale, locales: settings.locales });
 export const handle = dialect;`;
 
 const CONFIGURE_CLIENT = `// src/routes/+layout.ts
-import { configure } from '#lib/i18n.js';
+import { configure } from '#lib/i18n.ts';
 import type { LayoutLoad } from './$types';
 
 export const load: LayoutLoad = async ({ data }) => {

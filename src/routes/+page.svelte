@@ -57,10 +57,18 @@
 <!-- MF2 markup rendered through snippets: the link and the emphasis live in the translation -->
 <p class="mt-2 text-gray-500 dark:text-gray-400" data-testid="rich">
 	<Rich parts={formatParts('home:rich')}>
-		{#snippet mf2(children)}<em>{@render children()}</em>{/snippet}
+		{#snippet mf2(children)}<em
+				><a
+					class="text-gray-900 underline dark:text-gray-100"
+					href="https://messageformat.unicode.org/"
+					target="_blank"
+					rel="noopener noreferrer"
+					>{@render children()}<span class="sr-only"> {t('common:new_tab')}</span></a
+				></em
+			>{/snippet}
 		{#snippet link(children)}<a
 				class="text-gray-900 underline dark:text-gray-100"
-				href="https://messageformat.github.io/messageformat/">{@render children()}</a
+				href={localizeHref('/rich-text')}>{@render children()}</a
 			>{/snippet}
 	</Rich>
 </p>

@@ -44,10 +44,10 @@ describe('sv add-on', () => {
 			greeting: 'Hello, {$name}!'
 		});
 		expect(files['src/hooks.server.ts']).toContain(
-			"import { handle as dialect } from '#lib/i18n.js'"
+			"import { handle as dialect } from '#lib/i18n.ts'"
 		);
 		expect(files['src/hooks.server.ts']).toContain('export const handle: Handle = dialect;');
-		expect(files['src/hooks.ts']).toContain("import { reroute as dialect } from '#lib/i18n.js'");
+		expect(files['src/hooks.ts']).toContain("import { reroute as dialect } from '#lib/i18n.ts'");
 		expect(files['src/hooks.ts']).toContain('export const reroute: Reroute = dialect');
 		expect(files['src/app.html']).toContain('<html lang="%dialect.lang%" dir="%dialect.dir%">');
 	});
@@ -90,6 +90,7 @@ describe('sv add-on', () => {
 		);
 		expect(files['src/lib/i18n.js']).toContain("from 'svelte-dialect/kit'");
 		expect(files['src/hooks.js']).toContain('export const transport = {};');
+		expect(files['src/hooks.js']).toContain("import { reroute as dialect } from '#lib/i18n.js'");
 		expect(files['src/hooks.js']).toMatch(
 			/@type \{import\('@sveltejs\/kit\/hooks'\)\.Reroute\} \*\/\s*export const reroute = dialect;/
 		);

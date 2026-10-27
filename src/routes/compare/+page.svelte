@@ -194,8 +194,10 @@
 				<span class="font-mono">{source.name}</span>:
 				{#each source.links as href, i (href)}
 					{#if i > 0},
-					{/if}<a class={link} {href} rel="noopener"
-						>{href.replace('https://', '').replace(/\/$/, '')}</a
+					{/if}<a class={link} {href} target="_blank" rel="noopener noreferrer"
+						>{href.replace('https://', '').replace(/\/$/, '')}<span class="sr-only">
+							{t('common:new_tab')}</span
+						></a
 					>
 				{/each}
 			</li>

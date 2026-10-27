@@ -23,7 +23,9 @@ const markdown = new NodeHtmlMarkdown({ codeBlockStyle: 'fenced', ignore: ['butt
 const toMarkdown = (html: string) => {
 	const main = (/<main\b[^>]*>([\s\S]*)<\/main>/.exec(html)?.[1] ?? '')
 		// the column labels /compare repeats in each cell for narrow screens
-		.replace(/<span class="[^"]*\blg:hidden\b[^"]*">[^<]*<\/span>/g, '');
+		.replace(/<span class="[^"]*\blg:hidden\b[^"]*">[^<]*<\/span>/g, '')
+		// screen-reader-only text, such as "(opens in a new tab)" on external links
+		.replace(/<span class="sr-only"[^>]*>[^<]*<\/span>/g, '');
 	return (
 		markdown
 			.translate(main)

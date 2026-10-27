@@ -1,6 +1,6 @@
 {
 	"name": "svelte-dialect",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Svelte 5 and SvelteKit i18n on MessageFormat 2 (MF2): runes, typed message keys, locale in the URL, SSR-safe per-request locale detection, lazy-loaded translations, rich text",
 	"author": {
 		"name": "krowten",

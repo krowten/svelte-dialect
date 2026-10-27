@@ -40,7 +40,7 @@ Call it once on the server at boot, before the first request, and again on the c
 src/hooks.server.ts — top-level await runs before the first request 
 
 ```ts
-import { configure, handle as dialect } from '#lib/i18n.js';
+import { configure, handle as dialect } from '#lib/i18n.ts';
 
 const settings = await loadLocaleSettings();
 configure({ defaultLocale: settings.defaultLocale, locales: settings.locales });
@@ -51,7 +51,7 @@ export const handle = dialect;
 src/routes/+layout.ts 
 
 ```ts
-import { configure } from '#lib/i18n.js';
+import { configure } from '#lib/i18n.ts';
 import type { LayoutLoad } from './$types';
 
 export const load: LayoutLoad = async ({ data }) => {

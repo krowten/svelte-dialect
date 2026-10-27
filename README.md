@@ -63,7 +63,7 @@ Wire up `handle` in **`src/hooks.server.ts`**, typed the way SvelteKit expects:
 
 ```ts
 import type { Handle } from '@sveltejs/kit/hooks';
-import { handle as dialect } from '#lib/i18n.js';
+import { handle as dialect } from '#lib/i18n.ts';
 
 export const handle: Handle = dialect;
 ```
@@ -73,7 +73,7 @@ so your route files need no `[locale]` directory:
 
 ```ts
 import type { Reroute } from '@sveltejs/kit/hooks';
-import { reroute as dialect } from '#lib/i18n.js';
+import { reroute as dialect } from '#lib/i18n.ts';
 
 export const reroute: Reroute = dialect;
 ```
@@ -124,7 +124,7 @@ currencies and markup all work with the same one syntax to learn:
 
 ```svelte
 <script lang="ts">
-	import { t } from '#lib/i18n.js';
+	import { t } from '#lib/i18n.ts';
 
 	let name = $state('Kat');
 </script>

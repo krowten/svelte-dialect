@@ -12,7 +12,7 @@ export const { t, handle, reroute, localizeHref, localizedEntries } = createDial
 
 const REROUTE = `// src/hooks.ts — universal, not hooks.server.ts
 import type { Reroute } from '@sveltejs/kit/hooks';
-import { reroute as dialect } from '#lib/i18n.js';
+import { reroute as dialect } from '#lib/i18n.ts';
 
 export const reroute: Reroute = dialect;`;
 

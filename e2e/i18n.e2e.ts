@@ -13,11 +13,12 @@ test('MF2 markup renders through snippets, not as stringified functions', async 
 	const rich = page.getByTestId('rich');
 
 	// the emphasis and the link live in the translation, so both must become real elements
-	await expect(rich.locator('em')).toHaveText('MessageFormat 2');
-	await expect(rich.locator('a')).toHaveAttribute(
-		'href',
-		'https://messageformat.github.io/messageformat/'
-	);
+	await expect(rich.locator('em')).toContainText('MessageFormat 2');
+	await expect(rich.locator('em a')).toHaveAttribute('href', 'https://messageformat.unicode.org/');
+	// an external link opens in a new tab, and says so to a screen reader
+	await expect(rich.locator('em a')).toHaveAttribute('target', '_blank');
+	await expect(rich.locator('em a')).toContainText('(opens in a new tab)');
+	await expect(rich.locator('a').last()).toHaveAttribute('href', '/rich-text');
 	// a snippet leaking into the page as source text is the failure this guards against
 	await expect(rich).not.toContainText('function');
 });

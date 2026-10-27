@@ -6,7 +6,7 @@ const MESSAGE = `{ "cta": "Read {#link to=|/docs|}the docs{/link} before you shi
 
 const COMPONENT = `<script lang="ts">
 	import { Rich } from 'svelte-dialect';
-	import { formatParts } from '#lib/i18n.js';
+	import { formatParts } from '#lib/i18n.ts';
 
 	// options come from the translation: let only a path on this site through
 	const internal = (to: unknown) => (/^\\/(?![/\\\\])/.test(String(to)) ? String(to) : undefined);

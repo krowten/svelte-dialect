@@ -50,7 +50,7 @@ const createOnly = (path: string, text: string) =>
 /** The hook file the README shows, for a project that has none yet. */
 const hookFile = (name: string, type: string, ts: boolean) =>
 	ts
-		? `import type { ${type} } from '@sveltejs/kit/hooks';\nimport { ${name} as dialect } from '#lib/i18n.js';\n\nexport const ${name}: ${type} = dialect;\n`
+		? `import type { ${type} } from '@sveltejs/kit/hooks';\nimport { ${name} as dialect } from '#lib/i18n.ts';\n\nexport const ${name}: ${type} = dialect;\n`
 		: `import { ${name} as dialect } from '#lib/i18n.js';\n\n/** @type {import('@sveltejs/kit/hooks').${type}} */\nexport const ${name} = dialect;\n`;
 
 /** Writes `text` into an empty or missing file and hands an existing one to `edit`. */
@@ -71,6 +71,8 @@ export default defineAddon({
 		const locales = parseLocales(options.locales);
 		const routing = isKit && options.routing;
 		const ts = language === 'ts';
+		// Kit 3 apps resolve with allowImportingTsExtensions, so a TS project imports the .ts file itself
+		const i18nImport = `#lib/i18n.${language}`;
 
 		sv.dependency('svelte-dialect', `^${pkg.version}`);
 
@@ -117,7 +119,7 @@ export default defineAddon({
 						handleContent: 'dialect',
 						comments
 					});
-					js.imports.addNamed(ast, { from: '#lib/i18n.js', imports: { handle: 'dialect' } });
+					js.imports.addNamed(ast, { from: i18nImport, imports: { handle: 'dialect' } });
 				})
 			)
 		);
@@ -140,11 +142,11 @@ export default defineAddon({
 						});
 						if (exported.declaration !== declaration) {
 							console.warn(
-								`svelte-dialect: ${hooks} already exports reroute, left unchanged; it must call the one from #lib/i18n.js`
+								`svelte-dialect: ${hooks} already exports reroute, left unchanged; it must call the one from ${i18nImport}`
 							);
 							return false;
 						}
-						js.imports.addNamed(ast, { from: '#lib/i18n.js', imports: { reroute: 'dialect' } });
+						js.imports.addNamed(ast, { from: i18nImport, imports: { reroute: 'dialect' } });
 						if (ts)
 							js.imports.addNamed(ast, {
 								from: '@sveltejs/kit/hooks',
