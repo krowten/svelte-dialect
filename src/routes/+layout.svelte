@@ -1,6 +1,7 @@
 <script lang="ts">
 	import './layout.css';
 	import { page } from '$app/state';
+	import { GOOGLE_SITE_VERIFICATION } from '$app/env/public';
 	import { tick } from 'svelte';
 	import { MediaQuery } from 'svelte/reactivity';
 	import { t, getLocale, setLocale, locales, localizeHref } from '#lib/i18n.js';
@@ -102,6 +103,9 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="svelte-dialect" />
 	<meta name="twitter:card" content="summary" />
+	{#if GOOGLE_SITE_VERIFICATION}
+		<meta name="google-site-verification" content={GOOGLE_SITE_VERIFICATION} />
+	{/if}
 </svelte:head>
 
 <svelte:window
